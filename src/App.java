@@ -8,7 +8,7 @@ import models.Results;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        int size=100;
+        int size=100000;
 
         int[] arreglo = generate(size);
         int[] arreglo2 = arreglo.clone();
@@ -20,7 +20,7 @@ public class App {
             return null;
 
         };
-        Results rBubble = BenchMarking.medirTiempo(funcionBubble,"Burbuja",size);
+        Results rBubble = BenchMarking.medirTiempo(funcionBubble,"Burbuja: ",size);
         System.out.println(rBubble.getName()+" = "+rBubble.getTime());
 
         Callable<Void> funcionBubbleAvan = () ->{
@@ -28,8 +28,16 @@ public class App {
             return null;
 
         };
-        Results rBubbleAvan = BenchMarking.medirTiempo(funcionBubbleAvan,"Burbuja avanzado",size);
+        Results rBubbleAvan = BenchMarking.medirTiempo(funcionBubbleAvan,"Burbuja avanzado: ",size);
         System.out.println(rBubbleAvan.getName()+" = "+rBubbleAvan.getTime());
+
+        Callable<Void> funcionShell = () ->{
+            metodos.sortShell(arreglo3);             
+            return null;
+
+        };
+        Results rShell= BenchMarking.medirTiempo(funcionShell,"SHELL: ",size);
+        System.out.println(rShell.getName()+" = "+rShell.getTime());
     }
 
     public static int[] generate(int size){

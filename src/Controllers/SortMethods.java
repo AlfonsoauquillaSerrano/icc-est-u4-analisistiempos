@@ -33,4 +33,20 @@ public class SortMethods {
 
     }
 
+    public void sortShell(int[] arreglo){
+        int n = arreglo.length;
+
+    for (int gap = n / 2; gap > 0; gap /= 2) {
+        for (int i = gap; i < n; i++) {
+            int valorActual = arreglo[i];
+            int j = i;
+            while (j >= gap && arreglo[j - gap] > valorActual) {
+                arreglo[j] = arreglo[j - gap];
+                j -= gap;
+            }
+            arreglo[j] = valorActual;
+        }
+    }
+    }
+
 }
